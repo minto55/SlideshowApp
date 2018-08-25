@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:SliderShowApp.xcodeproj">
+      location = "self:/Users/yuitomiyamoto/Desktop/SliderShowApp/SlideshowApp.xcodeproj">
    </FileRef>
 </Workspace>

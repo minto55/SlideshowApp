@@ -8,11 +8,113 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
+
+    //画像表示先
+    @IBOutlet weak var image: UIImageView!
+    
+    //３枚の写真の変数を設定
+    let userPictures1 = UIImage(named: "userPic1")!
+    let userPictures2 = UIImage(named: "userPic2")!
+    let userPictures3 = UIImage(named: "userPic3")!
+    
+    //写真番号を宣言
+    var PicturesNumber = 0
+    
+    //配列で宣言
+    let imageNameArray = ["userPic1", "userPic2", "userPic3"]
+    
+    //タイマー型宣言
+    var timer: Timer!
+    
+    @IBOutlet weak var button: UIButton!
+    
+    //再生ボタン押す
+    @IBAction func Start(_ sender: Any) {
+        if self.timer == nil{
+            //変数timerがnilのとき
+             button.setTitle("停止", for: .normal)
+            //タイマー起動
+            self.timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(updateTimer(_:)),userInfo: nil, repeats: true)}
+        else if self.timer != nil{
+            //変数timerがnilではないときボタンを変更
+            button.setTitle("再生", for: .normal)
+            //一時停止
+            self.timer.invalidate()
+            self.timer = nil
+    }
+        }
+    
+    //ボタンタップ後、2秒毎に画像を変更する（写真番号をに1プラスして、配列から取得）
+    @objc func updateTimer(_ timer: Timer){
+        
+        if PicturesNumber < 2 {
+            PicturesNumber += 1}
+        else if PicturesNumber == 2{
+            PicturesNumber = 0}
+        
+        //配列から取得
+        let slidePic1 = imageNameArray[PicturesNumber]
+        let slidePic2 = UIImage(named:slidePic1)
+        //PicturesNumberの画像を表示
+        self.image.image = slidePic2
+        }
+    
+    @IBAction func GoingNext(_ sender: Any){
+        //次の画像を表示（1枚目なら2枚目、2枚目なら3枚目、3枚目なら１枚目）
+        if image.image! == self.userPictures1 && self.timer == nil{self.image.image = self.userPictures2}
+        else if
+            image.image! == self.userPictures2 && self.timer == nil{self.image.image = self.userPictures3}
+        else if
+            image.image! == self.userPictures3 && self.timer == nil{self.image.image = self.userPictures1}
+        }
+    
+    @IBAction func GoingBack(_ sender: Any) {
+    //前の画像を表示（1枚目なら3枚目、2枚目なら１枚目、3枚目なら2枚目）
+        if
+            image.image! == self.userPictures1 && self.timer == nil{self.image.image = self.userPictures3}
+        else if
+            image.image! == self.userPictures2 && self.timer == nil{self.image.image = self.userPictures1}
+        else if
+            image.image! == self.userPictures3{self.image.image =
+            self.userPictures2}
+    }
+    
+    //画像タップで次のページへ
+    @IBAction func onTapImage(_ sender: Any) {
+        if timer != nil{
+            timer.invalidate()
+             button.setTitle("再生", for: .normal)
+            self.timer = nil
+        }
+        performSegue(withIdentifier: "SecondPage", sender: nil)
+    }
+    
+    //画像データの引き渡し
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        //SecondViewControllerを取得
+    let secondViewController:SecondViewController = segue.destination as! SecondViewController
+        if self.image.image == self.userPictures1{
+            secondViewController.expandingPicName = userPictures1}
+        else if self.image.image == self.userPictures2{
+            secondViewController.expandingPicName = userPictures2}
+        else if self.image.image == self.userPictures3{
+            secondViewController.expandingPicName = userPictures3
+        }
+        }
+    
+    //画面先から戻る
+    @IBAction func unwind(_segue: UIStoryboardSegue){}
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+         image.image = userPictures1
+        
+        button.setTitle("再生", for: .normal)
+        
+    // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
