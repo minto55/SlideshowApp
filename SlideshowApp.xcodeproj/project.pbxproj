@@ -46,7 +46,6 @@
 		D94AF55E213060AC0062188F = {
 			isa = PBXGroup;
 			children = (
-				D97BE9812131680E003FCDB0 /* SecondViewController.swift */,
 				D94AF569213060AC0062188F /* SliderShowApp */,
 				D94AF568213060AC0062188F /* Products */,
 			);
@@ -65,6 +64,7 @@
 			children = (
 				D94AF56A213060AC0062188F /* AppDelegate.swift */,
 				D94AF56C213060AC0062188F /* ViewController.swift */,
+				D97BE9812131680E003FCDB0 /* SecondViewController.swift */,
 				D96C61782131926F00EDD04C /* userPic1.jpg */,
 				D96C617A2131928100EDD04C /* userPic2.jpg */,
 				D96C617C2131928800EDD04C /* userPic3.jpg */,
