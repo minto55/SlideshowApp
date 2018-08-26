@@ -14,7 +14,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SliderShowApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SlideshowApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -133,8 +133,9 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="Button" destination="Q7s-WQ-D3y" id="631-b8-7dm"/>
                         <outlet property="button" destination="Q7s-WQ-D3y" id="fGh-im-PKu"/>
+                        <outlet property="goingBack" destination="Z4r-JZ-oKY" id="aqc-dR-g5P"/>
+                        <outlet property="goingNext" destination="K4n-cS-vCJ" id="2Au-PM-v4s"/>
                         <outlet property="image" destination="ZdH-tM-yTg" id="yPX-UZ-E8O"/>
                         <segue destination="O9O-op-eKy" kind="show" identifier="SecondPage" id="2oe-ln-gbK"/>
                     </connections>
@@ -151,7 +152,7 @@
         <!--Second View Controller-->
         <scene sceneID="sDv-0U-S73">
             <objects>
-                <viewController id="O9O-op-eKy" customClass="SecondViewController" customModule="SliderShowApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="O9O-op-eKy" customClass="SecondViewController" customModule="SlideshowApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1ee-ps-CuM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
