@@ -77,23 +77,34 @@ class ViewController: UIViewController {
     //「進むボタン」タップ後
     @IBAction func GoingNext(_ sender: Any){
         //次の画像を表示（1枚目なら2枚目、2枚目なら3枚目、3枚目なら１枚目）
-        if image.image! == self.userPictures1 && self.timer == nil{self.image.image = self.userPictures2
-        }else if image.image! == self.userPictures2 && self.timer == nil{
-            self.image.image = self.userPictures3
-        }else if image.image! == self.userPictures3 && self.timer == nil{
-            self.image.image = self.userPictures1
+        
+        if PicturesNumber < 2 {
+            PicturesNumber += 1
+        }else if PicturesNumber == 2{
+            PicturesNumber = 0
         }
+        //配列から取得
+        let slidePic1 = imageNameArray[PicturesNumber]
+        let slidePic2 = UIImage(named:slidePic1)
+        //PicturesNumberの画像を表示
+        self.image.image = slidePic2
     }
+    
     
     //「戻るボタン」タップ後
     @IBAction func GoingBack(_ sender: Any) {
         //前の画像を表示（1枚目なら3枚目、2枚目なら１枚目、3枚目なら2枚目）
-        if image.image! == self.userPictures1 && self.timer == nil{self.image.image = self.userPictures3
-        }else if image.image! == self.userPictures2 && self.timer == nil{
-            self.image.image = self.userPictures1
-        }else if image.image! == self.userPictures3 && self.timer == nil{
-            self.image.image = self.userPictures2
+        if PicturesNumber > 0 {
+            PicturesNumber -= 1
+        }else if PicturesNumber == 0{
+            PicturesNumber = 2
         }
+        //配列から取得
+        let slidePic1 = imageNameArray[PicturesNumber]
+        let slidePic2 = UIImage(named:slidePic1)
+        //PicturesNumberの画像を表示
+        self.image.image = slidePic2
+        
     }
     
     //画像タップ後、次のページへ
